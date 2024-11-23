@@ -11,10 +11,16 @@ interface IBattleNFT {
         HEAL_SELF_AFTER_ATTACK,
         HEAL_ALL_AFTER_ATTACK
     } // 6 types
+
     struct NftStats {
         euint32 health;
         euint32 attack;
         euint4 ability;
         euint32 abilityPower;
     }
+
+    error ZeroValue();
+    error ZeroAddress();
+    error NotEnoughAllowance();
+    event PricePudated(uint256 newPrice);
 }
