@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity =0.8.27;
+pragma solidity =0.8.28;
 import {ERC721URIStorage, ERC721} from "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import {IBattleNFT} from "./interfaces/IBattleNFT.sol";
+import {INftStorage} from "./interfaces/INftStorage.sol";
 import {TFHE, euint64} from "./fhevm/lib/TFHE.sol";
 /* Logic:
 1. user buy Battle token (next BT) on Dex
@@ -22,7 +23,9 @@ contract BattleNft is ERC721URIStorage, IBattleNFT {
         uint256 id = tokenIdCounter;
         tokenIdCounter++;
         euint64 rand = TFHE.randEuint64();
-        stats[id] = TFHE.allowTransient(rand, nftStorage);
+        address _nftStorage = nftStorage;
+        TFHE.allow(rand, _nftStorage);
+        stats[id] = INftStorage(_nftStorage).getNftStats(rand);
         _mint(msg.sender, id);
     }
 }

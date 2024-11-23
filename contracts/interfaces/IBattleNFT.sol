@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity =0.8.27;
+pragma solidity =0.8.28;
 import {euint32, euint4} from "../fhevm/lib/TFHE.sol";
 interface IBattleNFT {
     enum AbilityType {

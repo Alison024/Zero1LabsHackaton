@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity =0.8.27;
+pragma solidity =0.8.28;
 import {TFHE, Impl, euint64, euint4} from "./fhevm/lib/TFHE.sol";
 import {IBattleNFT} from "./interfaces/IBattleNFT.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
